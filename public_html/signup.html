@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>회원가입 폼</title>
+		<style>
+.bnt {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+	margin-top:10px;
+}
+
+.bnt:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+.bnt:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+</style>
+</head>
+<body>
+  <center><a href="main2.php" "><img src="title.png" width = "400" height = "100"></a>
+	<form method="post" action="p_signup.php">
+		
+		<h1>회원가입</h1>
+			<fieldset style="width : 400px" >
+				<legend>입력사항</legend>
+					<table>
+						<tr>
+							<td>아이디</td>
+							<td><input type="text" size="35" name="id" placeholder="아이디"></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="password" size="35" name="pw" placeholder="비밀번호"></td>
+						</tr>
+						<tr>
+							<td>이름</td>
+							<td><input type="text" size="35" name="name" placeholder="이름"></td>
+						</tr>
+					</table>
+
+				<input type="submit" value="가입하기" class = "bnt" /><input type="reset" value="다시쓰기"  class = "bnt" />
+			
+		</fieldset>
+	</form>
+	</center>
+</body>
+</html>

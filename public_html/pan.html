@@ -1,0 +1,128 @@
+<?
+        $conn = mysqli_connect("localhost","root","autoset","db", 3306);
+		mysqli_select_db($conn, "db");
+        $query = "SELECT * FROM guestbook ORDER BY num DESC";
+        $result = mysqli_query($conn, $query);
+        $total = mysqli_affected_rows($conn);
+        $pagesize=5;
+?>
+
+
+<style>
+.a{
+margin-top:-87px;
+margin-left:600px;
+}
+.bnt {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+}
+
+.bnt:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+.bnt:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+</style>
+
+
+
+
+
+   <FORM ACTION="insert.php" METHOD="POST">
+   <center><a href="main2.php" "><img src="title.png" width = "400" height = "100"></a></center>
+   <?
+   session_start();
+if(!isset($_SESSION['id'])) //세션이 존재하지 않을 때
+{
+    header ('Location:login.html');
+}
+ echo "{$_SESSION['name']}";
+echo " 님 어서오세요!";
+ ?>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+   <input type = "button" value = "로그아읏" onclick="a();" class = "bnt"></h1>
+   <input type = "button" value = "회원탈퇴" onclick="deleteuser_();"  class = "bnt">
+   <fieldset style="width : 250">
+				<legend>메뉴</legend>
+					<table>
+						<tr>
+							<td><a href="http://slit.bitplay.co/sl1/" target = "_blank" style="text-decoration: none; color : black;">게임하기</a></td>
+						</tr>
+						<tr>
+							<td>
+							<a href="pan.html" style="text-decoration: none; color : black;">게시판</a>
+							</td>
+						</tr>
+						<tr>
+                            <td>
+							<a href="board.php" style="text-decoration: none; color : black;">익명 게시판</a>
+							</td>
+						</tr>
+					</table>
+			
+		</fieldset>
+    <fieldset style="width : 250" class="a">
+	<h3><strong>게시판<strong></h3></legend>
+   <TABLE BORDER=1 WIDTH=600 >
+       <TR>
+           <TD>아이디:  <? session_start(); echo "{$_SESSION['id']}"?></TD>
+       </TR>
+       <TR>
+           <TD COLSPAN=4><TEXTAREA NAME="content" COLS=80 ROWS=5></TEXTAREA></TD>
+       </TR>
+       <TR>
+           <TD COLSPAN=4 align=right><INPUT TYPE="SUBMIT" VALUE="확인"></TD>
+       </TR>
+	    </fieldset>
+   </TABLE>
+   </FORM>
+<BR>
+   <?
+       for($i=$_GET['no']; $i < $_GET['no']+$pagesize; $i++) {
+           if ($i < $total)
+           {
+               mysqli_data_seek($result,$i);
+               $row = mysqli_fetch_array($result);
+	?>
+		<TABLE WIDTH=600 BORDER=1>
+       <TR>
+           <TD>No. <?=$row['num']?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성자 : <?= $row['id'] ?></TD>
+           <TD><a href="delete.php?id=<?=$row['id']?>&&num=<?=$row['num']?>">삭제</a></TD>
+       </TR>
+       <TR>
+           <TD COLSPAN=4><?=$row['content']?></TD>
+       </TR>
+   </TABLE>
+   <?
+           } //end if
+       } //end for
+       $prev = $_GET['no'] - $pagesize ;
+       $next = $_GET['no'] + $pagesize ;
+       if ($prev >= 0) {
+           echo("<a href='$_SERVER[PHP_SELF]?no=$prev'>이전</a> ");
+       }
+       if ($next < $total) {
+           echo("<a href='$_SERVER[PHP_SELF]?no=$next'>다음</a></center>");
+       }
+   ?>
+
+   <script>
+	function a(){
+location.href="logout.php";
+	}function b(){
+location.href="main.php";
+	}
+</script>

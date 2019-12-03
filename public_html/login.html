@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<title>회원가입 및 로그인 사이트</title>
+<link rel="stylesheet" type="text/css" href="/css/common.css" />
+<style>
+.bnt {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+	margin-top:20px;
+}
+
+.bnt:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+.bnt:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+</style>
+</head>
+<body>
+<center><a href="main2.php" "><img src="title.png" width = "400" height = "100"></a></center>
+<center>
+	<div id="login_box">
+		<h1>로그인</h1>							
+			<form method="post" action="p_login.php">
+				<table>
+						<tr>
+							<td>아이디</td>
+							<td><input type="text" size="35" name="id" placeholder="아이디"></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="password" size="35" name="pw" placeholder="비밀번호"></td>
+						</tr>
+					</table>
+					<input type="submit" value="로그인" class = "bnt" /> <input type="button" value="회원가입" onclick="a();" class = "bnt"/>
+				</center>	
+  </form>
+</div>
+</body>
+<script>
+function a(){
+location.href="signup.html";
+	}
+</script>
+</html>
