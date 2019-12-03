@@ -13,3 +13,12 @@
 ![그림26](https://user-images.githubusercontent.com/55998706/70037831-8d9b6480-15fa-11ea-8fc3-1a0cbdb9c672.png)
 ![그림27](https://user-images.githubusercontent.com/55998706/70037834-8e33fb00-15fa-11ea-89d7-df354d066654.png)
 ![그림28](https://user-images.githubusercontent.com/55998706/70037835-8e33fb00-15fa-11ea-96f8-14b71d0571a7.png)
+# 기능
+1. 로그인, 로그아웃
+ 회원가입시 적어 논 이름으로 '환영합니다' 문구 출력
+2. 회원가입, 회원탈퇴
+ 정보가 같은 회원이 있으면 중복으로 회원가입 불가
+3. 게시판
+ 작성자와 같은 아이디여야만 수정, 삭제 가능
+4. 익명게시판
+ 비밀 번호로 삭제 가능
